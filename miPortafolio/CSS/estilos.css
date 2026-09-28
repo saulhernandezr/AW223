@@ -198,3 +198,11 @@ section h2{
     color: blue;
     font-weight: bold;
 }
+
+/* estilo de los botones en javascript */
+.botones-habilidades {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}

@@ -6,13 +6,18 @@
     <title>Portafolio</title>
     <!-- se conecta el archivo de estilos.css -->
     <link rel="stylesheet" href="./css/estilos.css"> 
+    
+    
 </head>
 
 <body>
     <!-- este es el encabezado -->
     <header>
         <h1>Mi Portafolio</h1>
-        <p>Bienvenido a mi portafolio web personal</p>
+        <p id="bienvenida"> Bienvenido a mi portafolio web personal 
+            
+        </p>
+        <button id="botonBienvenida"> Cambiar bienvenida </button>
     </header>
     <!-- barra de navegación -->
      
@@ -34,7 +39,7 @@
                 <!-- el encabezado <h2> cuenta con el parrafo, describiendo la seccion.
                     se define la clase "boton" del css  -->
             <h2>hola, soy Saul Hernandez</h2>  
-            <p>soy estudiante de ITIID y aprendo a programar diseño web</p> 
+            <p>soy estudiante de ITIID y aprendo a programar diseño web</p>  
             <a href="" class="boton">ver mis proyectos</a>
             
             </div>        
@@ -60,7 +65,12 @@
 
        <section>
         <h2>Habilidades</h2>
-        
+
+        <!-- botones para cambiar el color y tipografia -->
+        <div class="botones-habilidades">
+        <button id="cambiarColor">Cambiar color</button>
+        <button id="cambiarFuente">Cambiar tipografía</button>
+    </div>
         <div>
             <!-- se agrega la clase "lista-habilidades", cambiando
              el enlistado de cada contenido -->
@@ -72,6 +82,7 @@
                 <li>Packet tracer</li>
                 <li>MySQL</li>
             </ul>
+            
         </div>
 
 <!-- seccion de proyectos   -->
@@ -93,27 +104,37 @@
        <section>
         <h2>Contacto</h2>
         <div>
-            <form action="">
+            <!-- id's del javascript para que se conecte con el script -->
+            <form id="formularioContacto">
+
                 <div>
                 <label for="nombre">Nombre:</label>
-                <input type="text">
+                <input type="text" id="nombre">
                 </div>
+
                 <div>
                 <label for="email">Email:</label>
-                <input type="email">
+                <input type="email" id="email">
                 </div>
-                <div></div>
+
+                <div>
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje"></textarea>
+                </div>
 
                 <button type="submit">Enviar</button>
+                <p id="mensajeFormulario"></p>
+
             </form>
         </div>
+       </section>
+
         </main>
         <!-- pie de pagina, especificando que es, y los derechos reservados-->
         <footer>
             <p>2026 mi portafolio web</p>
             <p>practica de programacion web todos los derechos reservados</p>
         </footer>
+        <script src="./js/javascript.js"></script>
 </body>
 </html>
