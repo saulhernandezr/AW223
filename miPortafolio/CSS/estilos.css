@@ -199,10 +199,10 @@ section h2{
     font-weight: bold;
 }
 
-/* estilo de los botones en javascript */
+/* estilo de los botones de interaccion de javascript */
 .botones-habilidades {
     display: flex;
     justify-content: center;
-    gap: 5px;
+    gap: 15px;
     margin-bottom: 20px;
 }
