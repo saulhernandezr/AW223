@@ -106,26 +106,29 @@
         <h2>Contacto</h2>
         <div>
             <!-- id's del javascript para que se conecte con el script -->
-            <form id="formularioContacto">
+            <form id="formularioContacto" action="guardar_mensaje.php" nethod="post">
 
-                <div>
+                <div class="campo">
                 <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre">
+                <input type="text" id="nombre" name="txtnombre" placeholder="escribe tu nombre">
                 </div>
 
                 <div>
                 <label for="email">Email:</label>
-                <input type="email" id="email">
+                <input type="email" id="email" name="txtcorreo">
                 </div>
 
                 <div>
                 <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje"></textarea>
+                <textarea id="mensaje" name="txtmensaje" rows="5"></textarea>
                 </div>
+
+                
 
                 <button type="submit">Enviar</button>
                 <p id="mensajeFormulario"></p>
 
+                
             </form>
         </div>
        </section>
