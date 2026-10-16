@@ -26,40 +26,42 @@
     <main>
         <section aria-labelledby="titulo-mensajes">
             <h2 id="titulo-mensajes">Mensajes Recibidos</h2>
-
+            
             <table>
                 <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Correo</th>
-                        <th scope="col">Mensaje</th>
-                        <th scope="col">Opciones</th>
-                    </tr>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Mensaje</th>
+                    <th>Fecha y Hora</th>
+                    <th>Acciones</th>
+                </tr>
+                    
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><?php echo $nombre; ?></td>
-                        <td><?php echo $correo; ?>/td>
-                        <td>Hola, me interesa tu portafolio.</td>
+                    <?php
+                    /* conecta con consulta_mensajes.php */
+                    require 'consulta_mensajes.php';
+                    $mensajes = consultamensajes();
+                    while ($arrMensaje=mysqli_fetch_array($mensajes)){
+                        
+                    echo "<tr>;
+                        <td>".$arrMensaje['nombre']."</td>
+                        <td>".$arrMensaje['correo']."</td>
+                        <td>".$arrMensaje['mensaje']."</td>
+                        <td>".$arrMensaje['timestap']."</td>
                         <td>
-                            <a href="editar.php?id=1" aria-label="Editar mensaje 1">editar</a>
-                            <a href="" aria-label="Eliminar mensaje 1">borrar</a>
+                            <a href='editar.php?id=".$arrMensaje['id']."'>Editar</a>
+                            <a href='borrar.php?id=".$arrMensaje['id']."'>Borrar</a>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><?php echo $nombre; ?></td>
-                        <td><?php echo $correo; ?></td>
-                        <td>Quisiera más información sobre tus proyectos.</td>
-                        <td>
-                            <a href="editar.php?id=2" aria-label="Editar mensaje 2">editar</a>
-                            <a href="" aria-label="Eliminar mensaje 2">borrar</a>
-                        </td>
-                    </tr>
+                    </tr>";
+                    }
+                    ?>
                 </tbody>
+                
+
             </table>
+            
         </section>
     </main>
 

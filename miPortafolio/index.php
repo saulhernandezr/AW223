@@ -106,19 +106,19 @@
         <h2>Contacto</h2>
         <div>
             <!-- id's del javascript para que se conecte con el script -->
-            <form id="formularioContacto" action="guardar_mensaje.php" nethod="post">
+            <form class="contacto" id="formularioContacto" action="guardar_mensaje.php" method="post">
 
                 <div class="campo">
                 <label for="nombre">Nombre:</label>
                 <input type="text" id="nombre" name="txtnombre" placeholder="escribe tu nombre">
                 </div>
 
-                <div>
+                <div class="campo">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="txtcorreo">
+                <input type="email" id="email" name="txtcorreo" placeholder="escribe tu correo" required>
                 </div>
 
-                <div>
+                <div class="campo">
                 <label for="mensaje">Mensaje:</label>
                 <textarea id="mensaje" name="txtmensaje" rows="5"></textarea>
                 </div>
@@ -139,6 +139,7 @@
             <p>2026 mi portafolio web</p>
             <p>practica de programacion web todos los derechos reservados</p>
         </footer>
-        <script src="./js/javascript.js"></script>
+       <!--  <script src="./js/javascript.js"></script> -->
+        <script src="./js/alertinsert.js"></script>
 </body>
 </html>

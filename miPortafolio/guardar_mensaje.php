@@ -1,20 +1,23 @@
 <?php
 require_once("conexion.php");
-$nombre= $_POST("txtnombre");
-$correo= $_POST("txtcorreo");
-$mensaje= $_POST("txtmensaje");
 
-/* preparando la sentencia */
-$sqlinsert="INSERT INTO mensajes(nombre,correo,mensaje)
-        VALUES(?,?,?)";
 
-/* preparar statement */
-$stmt=$conexion->prepare($sqlInsert);
-$stmt->bin_param("sss",$nombre,$correo,$mensaje);
+$nombre = $_POST["txtnombre"];
+$correo = $_POST["txtcorreo"];
+$mensaje = $_POST["txtmensaje"];
 
-/* ejecucion */
-if($stmt->execute()){
-    echo "mensaje guardado";
-}else{
-    echo "error al guardar";
+try {
+    $sqlInsert = "INSERT INTO mensajes(nombre,correo,mensaje) VALUES(?,?,?)";
+    $stmt = $conexion->prepare($sqlInsert);
+    $stmt->bind_param("sss", $nombre, $correo, $mensaje);
+    $stmt->execute();
+
+    $stmt->close();
+
+    header("Location: index.php?estadophp=exito");
+    exit;
+} catch (mysqli_sql_exception $e) {
+    error_log("Error al guardar mensaje: " . $e->getMessage());
+    header("Location: index.php?estadophp=error");
+    exit;
 }

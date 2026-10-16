@@ -31,16 +31,15 @@ botonFuente.addEventListener("click", function() {
 
 /* evento que ocurrira al presionar enviar */
 formulario.addEventListener("submit", function(event) {
-    event.preventDefault();
-    /* se valida si esta vacio el nombre, email. al final muestra si se envia correctamente*/
+    /* se valida si esta vacio el nombre o el email */
     if (nombre.value.trim() === "") {
+        event.preventDefault();
         alert("Por favor, escribe tu nombre.");
         return;
     }
-if (email.value.trim() === "") {
+    if (email.value.trim() === "") {
+        event.preventDefault();
         alert("El correo es obligatorio");
         return;
     }
-alert("Los datos del formulario fueron enviados correctamente.");
-formulario.reset();
 });
