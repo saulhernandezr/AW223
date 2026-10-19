@@ -235,10 +235,26 @@ section h2{
     margin-bottom: 20px;
 }
 .contacto{
-    border: 1px solid #000000;
-    background-color: #baae91;
+    border: 8px groove rgb(255, 0, 0);
+    background-color: #fffcd9;
     text-align: center;
     align-items: center;
-    padding: 12px;
     text-transform: uppercase;
+    max-height: 350px;
+    height: 350px;
+}
+.contacto textarea{
+    width: 50%;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    height: 150px;
+    min-height: 100px;
+    max-height: 200px;
+    position: relative;
+}
+.contacto button{
+    position: absolute;
+    bottom: -1400px;
+    
 }

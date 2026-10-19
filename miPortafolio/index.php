@@ -120,12 +120,10 @@
 
                 <div class="campo">
                 <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="txtmensaje" rows="5"></textarea>
+                <textarea id="mensaje" name="txtmensaje" rows="10"></textarea>
                 </div>
 
-                
-
-                <button type="submit">Enviar</button>
+                <button type="submit" >Enviar</button>
                 <p id="mensajeFormulario"></p>
 
                 

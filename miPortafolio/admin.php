@@ -42,8 +42,13 @@
                     <?php
                     /* conecta con consulta_mensajes.php */
                     require 'consulta_mensajes.php';
+                    /* conecta con borrar_mensaje.php */
+                    require 'borrar_mensaje.php';
+                    /* define mensajes con la funcion de consulta y borrar con la funcion de borrar
+                    de sus respectivos codigos */
                     $mensajes = consultamensajes();
-                    while ($arrMensaje=mysqli_fetch_array($mensajes)){
+                    $borrar = borrarmensaje();
+                    while ($arrMensaje=mysqli_fetch_array($mensajes, $borrar)){
                         
                     echo "<tr>;
                         <td>".$arrMensaje['nombre']."</td>
@@ -52,7 +57,7 @@
                         <td>".$arrMensaje['timestap']."</td>
                         <td>
                             <a href='editar.php?id=".$arrMensaje['id']."'>Editar</a>
-                            <a href='borrar.php?id=".$arrMensaje['id']."'>Borrar</a>
+                            <a href='borrar_mensaje.php?id=".$arrMensaje['id']."'>Borrar</a>
                         </td>
                     </tr>";
                     }
