@@ -42,22 +42,24 @@
                     <?php
                     /* conecta con consulta_mensajes.php */
                     require 'consulta_mensajes.php';
-                    /* conecta con borrar_mensaje.php */
-                    require 'borrar_mensaje.php';
                     /* define mensajes con la funcion de consulta y borrar con la funcion de borrar
                     de sus respectivos codigos */
                     $mensajes = consultamensajes();
-                    $borrar = borrarmensaje();
-                    while ($arrMensaje=mysqli_fetch_array($mensajes, $borrar)){
+                    while ($arrMensaje=mysqli_fetch_array($mensajes)){
                         
-                    echo "<tr>;
+                    echo "<tr>
                         <td>".$arrMensaje['nombre']."</td>
                         <td>".$arrMensaje['correo']."</td>
                         <td>".$arrMensaje['mensaje']."</td>
                         <td>".$arrMensaje['timestap']."</td>
                         <td>
                             <a href='editar.php?id=".$arrMensaje['id']."'>Editar</a>
-                            <a href='borrar_mensaje.php?id=".$arrMensaje['id']."'>Borrar</a>
+                            
+                            <form action='borrar_mensaje.php' method='POST'
+                            onsubmit='return confirm(\"¿Estás seguro de borrar este mensaje?\");'style='display:inline;'>
+                            <input type='hidden' name='id' value='".$arrMensaje['id']."'>
+                            <button type='submit' aria-label='Borrar mensaje'>Borrar</button>
+                                </form>
                         </td>
                     </tr>";
                     }

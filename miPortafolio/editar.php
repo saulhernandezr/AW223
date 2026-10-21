@@ -3,6 +3,57 @@ $idMensaje = isset($_GET['id']) ? (int) $_GET['id'] : 0;
 $nombre = "";
 $correo = "";
 $mensaje = "";
+$error = "";
+
+require_once ("conexion.php");
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $idMensaje = filter_input(INPUT_POST, "id_mensaje", FILTER_VALIDATE_INT) ?: 0;
+    $nombre = trim($_POST["nombre"] ?? "");
+    $correo = trim($_POST["correo"] ?? "");
+    $mensaje = trim($_POST["mensaje"] ?? "");
+
+    if ($idMensaje <= 0) {
+        $error = "No se seleccionó un registro válido.";
+    } elseif ($nombre === "" || $correo === "" || $mensaje === "") {
+        $error = "Todos los campos son obligatorios.";
+    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        $error = "Escribe un correo electrónico válido.";
+    } else {
+        $stmt = $conexion->prepare(
+            "UPDATE mensajes SET nombre = ?, correo = ?, mensaje = ? WHERE id = ?"
+        );
+        $stmt->bind_param("sssi", $nombre, $correo, $mensaje, $idMensaje);
+        $stmt->execute();
+        $stmt->close();
+        $conexion->close();
+
+        header("Location: index.php?estadophp=actualizado");
+        exit;
+    }
+} else {
+    $idMensaje = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT) ?: 0;
+
+    if ($idMensaje > 0) {
+        $stmt = $conexion->prepare(
+            "SELECT nombre, correo, mensaje FROM mensajes WHERE id = ?"
+        );
+        $stmt->bind_param("i", $idMensaje);
+        $stmt->execute();
+        $stmt->bind_result($nombre, $correo, $mensaje);
+
+        if (!$stmt->fetch()) {
+            $error = "No se encontró el registro.";
+            $idMensaje = 0;
+        }
+
+        $stmt->close();
+    } else {
+        $error = "No se seleccionó un registro válido.";
+    }
+}
+
+$conexion->close();
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,7 @@
 <?php
 
 function consultamensajes(){
-    require_once "conexion.php";
+    require_once ("conexion.php");
 
     $selection ="select * from mensajes";
     try{
