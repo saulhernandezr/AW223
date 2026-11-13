@@ -1,6 +1,7 @@
 <?php
 require_once("conexion.php");
 $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : '';
+$listadegastos = "SELECT * FROM gastos";
 
 ?>
 
@@ -41,8 +42,43 @@ $categoria = isset($_POST['categoria']) ? $_POST['categoria'] : '';
         
     </form>
 
-    <p>This is a simple paragraph.</p>
-    >
+    <h2>listado de gastos</h2>
+    <table>
+        <tr>
+            <th>concepto</th>
+            <th>monto</th>
+            <th>categoria</th>
+            <th>estado</th>
+            <th>fecha</th>
+            <th>acciones</th>
+
+        </tr>
+        <?php
+        $result = $conexion->query($listadegastos);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["concepto"] . "</td>";
+                echo "<td>" . $row["monto"] . "</td>";
+                echo "<td>" . $row["categoria"] . "</td>";
+                echo "<td> pendiente </td>";
+                echo "<td>" . $row["fecha"] . "</td>";
+                echo "<td>" . "<a href='' >marcar pagado</a>" . "</td>";
+                
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='5'>No hay gastos registrados.</td></tr>";
+        }
+        ?>
+    </table>
+</body>
+
+</html>
+        
+
+    
+    
 </body>
 
 </html>
