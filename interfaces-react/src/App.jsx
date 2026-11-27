@@ -5,7 +5,6 @@ import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Buscador from "./components/Buscador";
 
-
 export default function App(){
   /* lista de lugares*/
  const destinos = [
@@ -64,7 +63,6 @@ export default function App(){
     imagen: "https://cdn.getyourguide.com/image/format=avif%2Cfit=cover%2Cgravity=auto%2Cquality=60/dam/BCC-2025-EXPLORER-BALI-BEACHES-HEADER_MOBILE.jpg",
   }
 ];
-  
 /* estados para busquedas, favoritos y categorias */
   const [busqueda, setBusqueda] = useState("");
   const [favoritos, setFavoritos] = useState([]);
@@ -74,20 +72,12 @@ export default function App(){
 
 /* quitar o agregar favoritos */
   const cambiarFavorito = (id) => {
-
     if (favoritos.includes(id)) {
-
       setFavoritos(favoritos.filter((favorito) => favorito !== id));
-
     } else {
-
       setFavoritos([...favoritos, id]);
-
     }
-
   };
-
-
   const cambiarVista = () => {
     setMostrarFavoritos(!mostrarFavoritos);
   };
@@ -104,13 +94,10 @@ export default function App(){
     return coincideBusqueda && coincideCategoria && coincideFavorito;
   });
 
-
-
   return(
     /* main */
     <main className="contenedor">
       <h1>Agencia de viajes</h1>
-
 
       <Navbar
         cantidadFavoritos={favoritos.length}
@@ -147,20 +134,12 @@ export default function App(){
               />
             ))
           ) : (
-
             <p className="sin-resultados">
               No se encontraron destinos.
             </p>
-
           )}
         </div>
-
     </main>
-
-
-
-
-
   );
 }
 

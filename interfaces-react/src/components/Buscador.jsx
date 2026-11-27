@@ -8,7 +8,6 @@ function Buscador({ busqueda, cambiarBusqueda }) {
         onChange={(e) => cambiarBusqueda(e.target.value)}
       />
     </div>
-  );
+     );
 }
-
 export default Buscador;
